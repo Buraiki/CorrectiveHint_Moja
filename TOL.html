@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	.center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+    height: 50px;
+}
+</style>
+	<title>Interactive Video</title>
+</head>
+<body>
+	<table style="width: 100%">
+	<!--<div id = "main" style="position: relative;">-->
+		<!--<img id = "Question" src="" style="z-index: 300000; position: relative;">-->
+		<tr>
+			<th><div id = "interact"><video width="900" height="600" id = "Video" controls>
+			<source src="video.mp4" type="video/mp4">
+			
+		</video>
+		</div></th>
+		<th><div id = "Question1" style="text-align: left; z-index: 300000; color: #0000FF"></div>
+		<div id = "Choice1" style="text-align: left; z-index: 200000; color: #0000FF"></div>
+		<div id = "Choice2" style="text-align: left; z-index: 300000; color: #0000FF"></div>
+		<div id = "Choice3" style="text-align: left; z-index: 300000; color: #0000FF"></div>
+		<div id = "Choice4" style="text-align: left; z-index: 300000; color: #0000FF"></div>
+		<div id = "Instruction" style="text-align: left; z-index: 300000; color: #0000FF"></div>
+		<div id="myDiv" style="text-align: left; color: #0000FF"></div></th>
+	</tr>
+</table>
+		
+	<!--</div>-->
+
+	<script type="text/javascript">
+		document.getElementById('Video').addEventListener('ended', myHandler, false);
+		function myHandler(e) {
+			//document.getElementById("Question").src = "image_Question.png"
+			//document.getElementById("Question").style.opacity = "0.6"
+
+			document.getElementById("interact").style.opacity = "0.2";
+			document.getElementById("Question1").innerHTML = "<h1>Which part in the earphone is directly connected to the wire and moves to generate sound</h1>";
+			document.getElementById("Choice1").innerHTML = "<h2>A. Diaphragm</h2><br>";
+			document.getElementById("Choice2").innerHTML = "<h2>B. Magnet</h2><br>";
+			document.getElementById("Choice3").innerHTML = "<h2>C. Voice Ring</h2><br>";
+			document.getElementById("Choice4").innerHTML = "<h2>D. Wired</h2><br>";
+			document.getElementById("Instruction").innerHTML = "Select Your Choice<br>";
+			//var btn = document.createElement("BUTTON");
+			//var t = document.createTextNode("CLICK ME");
+			//btn.appendChild(t);
+			//document.body.appendChild(btn);
+
+			var myDiv = document.getElementById("myDiv");
+
+			//Create array of options to be added
+			var array = ["Choice1","Choice2","Choice3","Choice4"];
+
+			//Create and append select list
+			var selectList = document.createElement("select");
+			selectList.setAttribute("id", "mySelect");
+			myDiv.appendChild(selectList);
+
+			//Create and append the optionsd
+			for (var i = 0; i < array.length; i++) {
+		    var option = document.createElement("option");
+		    option.setAttribute("value", array[i]);
+		    option.text = array[i];
+		    selectList.appendChild(option);
+			}
+
+			function listR(){
+ 			var e = document.getElementById("mySelect");
+ 			if(e.selectedIndex > 0){
+  			if("Choice4" === e.options[e.selectedIndex].value){ window.open("https://youtu.be/1D7jYr2VhYs?t=155"); }
+  			if("Choice3" === e.options[e.selectedIndex].value){ window.alert("Wrong. The voice ring moves the diaphragm due to its vibration but is not responsible for producing the sound itself."); }
+ 			}
+			}
+			document.getElementById("mySelect").addEventListener("click",listR);
+
+		}
+	</script>		
+</body>
+</html>
